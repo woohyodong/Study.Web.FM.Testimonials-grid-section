@@ -1,0 +1,63 @@
+@import url('https://fonts.googleapis.com/css2?family=Barlow+Semi+Condensed:wght@500;600&display=swap');
+:root{
+
+    /* ### Primary */
+
+    --moderate-violet: hsl(263, 55%, 52%);
+    --very-dark-grayish-blue: hsl(217, 19%, 35%);
+    --very-dark-blackish-blue: hsl(219, 29%, 14%);
+    --White:hsl(0, 0%, 100%);
+    
+    /* ### Neutral */    
+    --gray-light: hsl(0, 0%, 81%);
+    --gray-blue: hsl(210, 46%, 95%);
+
+    --font:"Barlow Semi Condensed", sans-serif;
+    --font-size:1.3rem;
+
+    --gap : 3rem; --gap-sm: 2rem;--gap-lg:calc(var(--gap) * 2);
+}
+* {margin: 0;padding: 0;box-sizing: border-box; list-style: none;}
+html{font-size: 62.5%;font-family: var(--font);}
+body{min-height: 100vh;font-size: var(--font-size);word-break: keep-all;background-color: var(--gray-blue);color: var(--gray-light);display: flex;justify-items: center;align-items: center;}
+.container{max-width: 1440px;min-width: 375px;margin: var(--gap-lg) auto; padding: var(--gap);}
+.card-wrapper{
+    width: 100%;max-width: 1110px;min-width: 320px;
+    display: grid;
+    grid-template-columns: repeat(4,1fr);
+    grid-template-rows: repeat(2,1fr);
+    grid-auto-rows: minmax(1fr, auto);
+    gap: var(--gap-sm);
+
+    & .card:nth-child(1){grid-column: span 2;}
+    & .card:nth-child(3){order: 4;}
+    & .card:nth-child(4){order:5; grid-column: span 2;}
+    & .card:nth-child(5){order: 3;grid-row: span 2;}
+}
+.card{
+    padding: var(--gap);
+    display: grid;
+    gap: var(--gap-sm);
+    border-radius: .75rem;
+    box-shadow: 0 .5rem 2rem rgba(0, 0, 0, 0.2);
+    background-color: var(--White);
+
+    & .profile{display: flex; align-items: center;gap: var(--gap-sm);}
+    & .profile img{width: 3.5rem;height: 3.5rem;border-radius: 50%;border: 2px solid}
+
+    & h2, h3 {color: var(--very-dark-blackish-blue);font-weight: 600;}
+}
+
+.card[class*="ty"]{  
+    & h2, h3 {color: var(--White);}
+}
+.card.ty1{background-color: var(--moderate-violet);}
+.card.ty2{background-color: var(--very-dark-grayish-blue);}
+.card.ty3{background-color: var(--very-dark-blackish-blue);}
+
+@media (max-width:600px) {
+    .card-wrapper{grid-template-columns: 1fr;
+      & .card{order: 0 !important; grid-column: auto !important;grid-row: auto !important;}   
+    }
+    
+}
